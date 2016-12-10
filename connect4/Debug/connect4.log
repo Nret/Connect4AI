@@ -1,3 +1,4 @@
-﻿  core.cpp
-  connect4.vcxproj -> C:\Users\Pete\Documents\Visual Studio 2015\Projects\connect4\Debug\connect4.exe
-  connect4.vcxproj -> C:\Users\Pete\Documents\Visual Studio 2015\Projects\connect4\Debug\connect4.pdb (Full PDB)
+﻿  main.cpp
+c:\users\pete\documents\github\connect4ai\connect4\main.cpp(194): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  connect4.vcxproj -> C:\Users\Pete\Documents\GitHub\Connect4AI\Debug\connect4.exe
+  connect4.vcxproj -> C:\Users\Pete\Documents\GitHub\Connect4AI\Debug\connect4.pdb (Full PDB)

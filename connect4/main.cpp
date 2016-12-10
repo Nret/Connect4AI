@@ -36,7 +36,7 @@ class gamefieldstate
 				//print_gamefield(next[i]->gf);
 				if (detect_win(next[i]->gf, me))
 				{
-					cout << "Yay a win" << endl;
+					//cout << "Yay a win" << endl;
 					bestMovePos = i;
 					return;
 				}
@@ -47,7 +47,7 @@ class gamefieldstate
 					{
 						if (detect_win(next[i]->next[j]->gf, otherPlayer(me)))
 						{
-							cout << "Oh no almost lost" << endl;
+							//cout << "Oh no almost lost" << endl;
 							bestMovePos = j;
 							return;
 						}
@@ -68,8 +68,24 @@ class gamefieldstate
 				}
 
 			}
-			if (noMove)
-				cout << "No good moves" << endl;
+			//if (noMove)
+				// cout << "No good moves" << endl;
+			
+
+			// Make sure that it is a valid move
+			if (gf[0][bestMovePos] != 250) {
+
+				for (int i = 0; i < 7; i++)
+				{
+					if (gf[0][i] == 250)
+					{
+						bestMovePos = i;
+						break;
+					}
+				}
+				cout << "Oh no, something went horribly wrong? there's nowhere for the AI to move?" << endl;
+			}
+
 		}
 
 		int children_make_moves(int level, unsigned char player, unsigned char me)
