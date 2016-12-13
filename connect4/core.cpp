@@ -17,7 +17,7 @@ void print_gamefield(unsigned char gf[6][7])
 	cout << endl;
 	cout << endl;
 	}
-
+/*
 bool detect_win(unsigned char gf[6][7],unsigned char playersign)
 	{
 	//:vertical
@@ -124,3 +124,86 @@ bool detect_win(unsigned char gf[6][7],unsigned char playersign)
 		}
 	return false;
 	}
+//*/
+
+bool detect_win(unsigned char gf[6][7], unsigned char playersign)
+{
+	//:vertical
+	int count = 0;
+	for (int yy = 0; yy < 7; yy++)
+	{
+		count = 0;
+		for (int xx = 0; xx < 6; xx++)
+		{
+			if (gf[xx][yy] == playersign)
+			{
+				count++;
+				if (count == 4)
+					return true;
+			}
+			else
+				count = 0;
+		}
+	}
+	//:horizontal
+	count = 0;
+	for (int xx = 0; xx < 6; xx++)
+	{
+		count = 0;
+		for (int yy = 0; yy < 7; yy++)
+		{
+			if (gf[xx][yy] == playersign)
+			{
+				count++;
+				if (count == 4)
+					return true;
+			}
+			else
+				count = 0;
+		}
+	}
+
+	//:diagonal
+	//make gamefield bigger:
+	int big[8][15];
+	for (int xx = 0; xx < 8; xx++)
+		for (int yy = 0; yy < 15; yy++)
+			big[xx][yy] = 32;
+	for (int xx = 0; xx < 6; xx++)
+		for (int yy = 0; yy < 7; yy++)
+			big[xx][yy + 4] = gf[xx][yy];
+
+	//left bottom to right top:
+	for (int xx = 2; xx < 8; xx++)
+	{
+		count = 0;
+		for (int ii = 0; ii < 8; ii++)
+		{
+			if (gf[7 - ii][ii + xx] == playersign)
+			{
+				count++;
+				if (count == 4)
+					return true;
+			}
+			else
+				count = 0;
+		}
+	}
+	//left top to right bottom:
+	for (int xx = 0; xx < 6; xx++)
+	{
+		count = 0;
+		for (int ii = 0; ii < 8; ii++)
+		{
+			if (gf[ii][ii + xx] == playersign)
+			{
+				count++;
+				if (count == 4)
+					return true;
+			}
+			else
+				count = 0;
+		}
+	}
+	return false;
+}
